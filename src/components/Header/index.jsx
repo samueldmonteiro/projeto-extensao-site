@@ -1,6 +1,6 @@
 import { Menu, X, ChevronDown, Home, BookOpen, Info, Lightbulb, Printer, MoveRight } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { data } from '../../mocks/subjects'
 import { useSubjectContext } from '../../context/SubjectContext'
 
@@ -38,12 +38,14 @@ const Header = () => {
   }
 
   const { currentSubject, setCurrentSubject } = useSubjectContext()
+  const navigate = useNavigate()
 
   const selectSubject = (e) => {
     const subjectName = e.currentTarget.innerText
     const subject = data.subjects.find(e => e.name === subjectName)
     setCurrentSubject(subject)
     closeMenu()
+    navigate('/')
   }
 
   return (
