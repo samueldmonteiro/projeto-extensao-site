@@ -7,7 +7,7 @@ const About = () => {
     <>
       <Header />
 
-      <section className="w-full flex flex-col items-center px-4 md:px-0 text-gray-800">
+      <section className=" w-full flex flex-col items-center px-10 md:px-0 text-gray-800">
         {/* Header */}
         <header className="max-w-2xl text-center pt-10">
           <Rocket className="w-16 h-16 mx-auto mb-2" />
