@@ -43,6 +43,7 @@ const Header = () => {
     const subjectName = e.currentTarget.innerText
     const subject = data.subjects.find(e => e.name === subjectName)
     setCurrentSubject(subject)
+    closeMenu()
   }
 
   return (
@@ -53,7 +54,7 @@ const Header = () => {
           <div className="flex justify-between items-center h-16">
 
             {/* Desktop Navigation - Center */}
-            <nav className="hidden md:flex flex-1 justify-between ">
+            <nav className="hidden md:flex flex-1 justify-between">
               <div className="flex space-x-5 items-center">
                 <Link to="/" className="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium flex items-center transition-colors">
                   <Home className="mr-2 h-4 w-4" /> HOME
@@ -79,30 +80,24 @@ const Header = () => {
                 <Link to="/sobre" className="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium flex items-center transition-colors">
                   <Info className="mr-2 h-4 w-4" /> SOBRE
                 </Link>
-
               </div>
 
               <div className="flex space-x-8 items-center">
                 {!currentSubject && <span className="cursor-pointer text-gray-900 px-3 py-2 text-sm font-medium flex items-center">
-                  <div
-                    className='hover:bg-cyan-500 bg-cyan-400 transition-colors py-2 px-4 rounded'>Projeto de Extensão</div>
+                  <div className='hover:bg-cyan-500 bg-cyan-400 transition-colors py-2 px-4 rounded'>Projeto de Extensão</div>
                 </span>}
                 {currentSubject && <div>
                   <div className='flex items-center'>
                     Assunto
                     <MoveRight className='ml-3 mr-3' />
                     <a className="text-gray-900 px-3 py-2 text-sm font-medium flex items-center">
-                      <div
-                        className='hover:bg-cyan-500 bg-cyan-400 transition-colors py-1 px-4 rounded'>{currentSubject.name}</div>
+                      <div className='hover:bg-cyan-500 bg-cyan-400 transition-colors py-1 px-4 rounded'>{currentSubject.name}</div>
                     </a>
                   </div>
-
                 </div>}
 
                 <span onClick={() => window.print()} className="text-gray-900 cursor-pointer px-3 py-2 text-sm font-medium flex items-center">
-                  <Printer
-                    className='hover:bg-indigo-500 bg-indigo-400 transition-colors  w-15 p-2.5 h-10 rounded' size={20}
-                    absoluteStrokeWidth={false} />
+                  <Printer className='hover:bg-indigo-500 bg-indigo-400 transition-colors w-15 p-2.5 h-10 rounded' size={20} />
                 </span>
               </div>
             </nav>
@@ -153,13 +148,13 @@ const Header = () => {
             <nav className="flex-1 overflow-y-auto py-4">
               <ul className="space-y-1">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/"
                     className="flex items-center px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                     onClick={closeMenu}
                   >
                     <Home className="mr-3 h-5 w-5" /> HOME
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <button
@@ -173,52 +168,55 @@ const Header = () => {
                   </button>
                   {isAssuntosOpen && (
                     <ul className="pl-4 mt-1 space-y-1">
-                      <li>
-                        <a
-                          href="#"
-                          className="flex items-center px-4 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"
-                          onClick={closeMenu}
-                        >
-                          <span className="w-5 h-5 mr-3 flex items-center justify-center">•</span> Subitem 1
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="#"
-                          className="flex items-center px-4 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors"
-                          onClick={closeMenu}
-                        >
-                          <span className="w-5 h-5 mr-3 flex items-center justify-center">•</span> Subitem 2
-                        </a>
-                      </li>
+                      {data.subjects.map(subject => (
+                        <li key={subject.name}>
+                          <span
+                            onClick={selectSubject}
+                            className="flex items-center px-4 py-2 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer"
+                          >
+                            <span className="w-5 h-5 mr-3 flex items-center justify-center">•</span> 
+                            {subject.name}
+                          </span>
+                        </li>
+                      ))}
                     </ul>
                   )}
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/sobre"
                     className="flex items-center px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 transition-colors"
                     onClick={closeMenu}
                   >
                     <Info className="mr-3 h-5 w-5" /> SOBRE
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="flex items-center px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 transition-colors"
-                    onClick={closeMenu}
-                  >
+                  <div className="flex items-center px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 transition-colors">
                     <Lightbulb className="mr-3 h-5 w-5" /> Projeto de Extensão
-                  </a>
+                  </div>
                 </li>
+                <li>
+                  <div
+                    onClick={() => {
+                      window.print()
+                      closeMenu()
+                    }}
+                    className="flex items-center px-4 py-3 text-gray-900 hover:bg-blue-50 hover:text-blue-600 transition-colors cursor-pointer"
+                  >
+                    <Printer className="mr-3 h-5 w-5" /> Imprimir
+                  </div>
+                </li>
+                {currentSubject && (
+                  <li className="px-4 py-3 border-t mt-2">
+                    <div className="flex items-center text-sm text-gray-700">
+                      <span className="font-medium">Assunto atual:</span>
+                      <span className="ml-2 bg-cyan-400 px-2 py-1 rounded">{currentSubject.name}</span>
+                    </div>
+                  </li>
+                )}
               </ul>
             </nav>
-
-            {/* Rodapé do menu (opcional) */}
-            <div className="p-4 border-t">
-              <p className="text-sm text-gray-500">© 2025 Seu Site</p>
-            </div>
           </div>
         </div>
       </div>
