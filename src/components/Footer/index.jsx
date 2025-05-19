@@ -3,16 +3,6 @@ import { Github, Linkedin, Mail } from "lucide-react";
 const team = [
 
   {
-    name: "Samuel Davi Gonçalves Monteiro",
-    role: "Desenvolvedor Web",
-    socials: {
-      github: "https://github.com/samueldmonteiro",
-      linkedin: "https://www.linkedin.com/in/samuel-m-4a4432250/",
-      email: "mailto:samuel.dvmonteiro@gmail.com",
-    },
-  },
-
-  {
     name: "Kauâ de Oliveira Lima",
     role: "Full‑stack Dev & UI/UX",
     socials: {
