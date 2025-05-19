@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 const team = [
 
   {
-    name: "Kauâ de Oliveira Lima",
+    name: "Kauã de Oliveira Lima",
     role: "Full‑stack Dev & UI/UX",
     socials: {
       github: "https://github.com/kaudi",
