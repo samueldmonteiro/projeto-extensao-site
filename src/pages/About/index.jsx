@@ -71,11 +71,11 @@ const About = () => {
             <h3 className="text-xl font-semibold text-indigo-500 mb-2">
               Desenvolvimento e Tecnologia
             </h3>
-            <p className="font-medium">Desenvolvedores: <span className="font-semibold">Kaudí de Oliveira Lima</span> e <span className="font-semibold">Wendrio Frazão Melo</span></p>
+            <p className="font-medium">Desenvolvedores: <span className="font-semibold">Kauã de Oliveira Lima</span> e <span className="font-semibold">Wendrio Frazão Melo</span></p>
             <p className="text-sm md:text-base leading-relaxed mb-4">
               Responsáveis pela criação e programação do site, utilizando ferramentas e linguagens adequadas para a interatividade e escalabilidade da plataforma.
             </p>
-            <p className="font-medium">Designer UI/UX: <span className="font-semibold">Kaudí de Oliveira Lima</span> e <span className="font-semibold">Wendrio Frazão Melo</span></p>
+            <p className="font-medium">Designer UI/UX: <span className="font-semibold">Kauã de Oliveira Lima</span> e <span className="font-semibold">Wendrio Frazão Melo</span></p>
             <p className="text-sm md:text-base leading-relaxed mb-4">
               Atuam na criação da interface do usuário, garantindo um layout intuitivo e acessível.
             </p>
